@@ -1,4 +1,4 @@
-import { Customer } from "@/types/customer";
+import { Customer, DocumentType, Gender } from "@/types/customer";
 import { Schema, model } from "mongoose";
 
 const customerSchema = new Schema<Customer>(
@@ -8,12 +8,12 @@ const customerSchema = new Schema<Customer>(
     email: { type: String, required: true, unique: true },
     phone: { type: String, required: true },
     address: { type: String, required: true },
-    gender: { type: String, enum: ["male", "female", "other"] },
-    birthDate: { type: Date },
+    gender: { type: String, enum: Gender, default: Gender.OTHER },
+    birthDate: { type: Date, default: Date.now },
     documentType: {
       type: String,
       required: true,
-      enum: ["dni", "passport", "other"],
+      enum: DocumentType,
     },
     documentNumber: { type: String, required: true },
     notes: { type: String },
