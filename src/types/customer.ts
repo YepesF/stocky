@@ -6,8 +6,8 @@ interface CustomerBase {
   email: string;
   phone: string;
   address: string;
-  gender: Gender;
-  birthDate: Date;
+  gender?: Gender;
+  birthDate?: Date;
   documentType: DocumentType;
   documentNumber: string;
   notes?: string;
@@ -26,6 +26,8 @@ export enum DocumentType {
   PASSPORT = "passport",
   FOREIGN_ID = "other",
 }
+
+export type CustomerDTO = Omit<CustomerBase, "createdAt" | "updatedAt">;
 
 export interface ICustomer extends CustomerBase, Document {}
 
