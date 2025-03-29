@@ -6,13 +6,25 @@ interface CustomerBase {
   email: string;
   phone: string;
   address: string;
-  gender: "male" | "female" | "other";
+  gender: Gender;
   birthDate: Date;
-  documentType: "dni" | "passport" | "other";
+  documentType: DocumentType;
   documentNumber: string;
   notes?: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export enum Gender {
+  MALE = "male",
+  FEMALE = "female",
+  OTHER = "other",
+}
+
+export enum DocumentType {
+  NATIONAL_ID = "dni",
+  PASSPORT = "passport",
+  FOREIGN_ID = "other",
 }
 
 export interface ICustomer extends CustomerBase, Document {}
